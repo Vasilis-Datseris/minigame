@@ -42,7 +42,10 @@ namespace minigame
 
         private void GoogleButton_Click(object sender, EventArgs e) //Sign-in With Google Account
         {
-
+            googleForm google = new googleForm();
+            this.Hide();
+            google.ShowDialog();
+            this.Show();
         }
         private void FacebookButton_Click(object sender, EventArgs e) //Sign-in With Facebook Account
         {

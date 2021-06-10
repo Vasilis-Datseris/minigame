@@ -201,6 +201,58 @@ namespace minigame
         private async void Minimize_MouseEnter(object sender, EventArgs e)
         {
             int delay = 2;
+            if (DarkMode.IsOn)
+                MinimizeDefault();
+            else
+                MinimizeSky();
+            while (green < 200)
+            {
+                Minimize.FlatAppearance.MouseOverBackColor = Color.FromArgb((green + 1) / 2, 0, green, 50);
+                green += 10;
+                this.Invalidate();
+                await Task.Delay(delay);
+            }
+            green = 0;
+        }
+
+        private async void Minimize_MouseLeave(object sender, EventArgs e)
+        {
+            green = 0;
+            MinimizeBlack();
+            await Task.Delay(1);
+            Minimize.BackColor = Color.FromArgb(0, 0, 0, 0); //Function to restore default upon leave hover on Close
+            this.Invalidate();
+        }
+
+        private async void Maximize_MouseEnter(object sender, EventArgs e)
+        {
+            int delay = 2;
+            if (DarkMode.IsOn)
+                MaximizeDefault();
+            else
+                MaximizeSky();
+            while (blue < 255)
+            {
+                Maximize.FlatAppearance.MouseOverBackColor = Color.FromArgb((blue + 1) / 2, 0, 55, blue);
+                blue += 10;
+                this.Invalidate();
+                await Task.Delay(delay);
+            }
+            blue = 0;
+        }
+
+        private async void Maximize_MouseLeave(object sender, EventArgs e)
+        {
+            blue = 0;
+            MaximizeBlack();
+            await Task.Delay(1);
+            Maximize.BackColor = Color.FromArgb(0, 0, 0, 0); //Function to restore default upon leave hover on Close
+            this.Invalidate();
+        }
+
+        private async void Close_MouseEnter(object sender, EventArgs e)
+        {
+            int delay = 2;
             Close.FlatAppearance.BorderColor = Color.FromArgb(1, 1, 1, 1);
             if (Variables.ColorFlag)
                 CloseDefault();
@@ -216,29 +268,31 @@ namespace minigame
             red = 0;
         }
 
-        private void Minimize_MouseLeave(object sender, EventArgs e)
+        private async void Close_MouseLeave(object sender, EventArgs e)
         {
-
+            red = 0;
+            CloseBlack();
+            await Task.Delay(1);
+            Close.BackColor = Color.FromArgb(0, 0, 0, 0); //Function to restore default upon leave hover on Close
+            this.Invalidate();
         }
-
-        private void Maximize_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Maximize_MouseLeave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Close_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Close_MouseLeave(object sender, EventArgs e)
-        {
-
-        }
+        private void MinimizeSky()  //Function to change image on mouse Hover
+            => Minimize.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.minimize_window_sky));
+        private void MinimizeDefault()  //Function to change image on mouse Hover
+            => Minimize.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.minimize_window_black));
+        private void MinimizeBlack()    //Function to change image on mouse Hover
+            => Minimize.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.minimize_window));
+        private void MaximizeSky()  //Function to change image on mouse Hover
+            => Maximize.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.maximize_window_sky));
+        private void MaximizeDefault()  //Function to change image on mouse Hover
+            => Maximize.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.maximize_window_black));
+        private void MaximizeBlack()    //Function to change image on mouse Hover
+            => Maximize.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.maximize_window));
+        private void CloseSky() //Function to change image on mouse Hover
+            => Close.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Close_skyt));
+        private void CloseDefault() //Function to change image on mouse Hover
+            => Close.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Close_black));
+        private void CloseBlack()   //Function to change image on mouse Hover
+            => Close.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Close));
     }
 }
