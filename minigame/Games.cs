@@ -8,8 +8,14 @@ namespace minigame
 {
     public partial class Games : Form
     {
+        private Profile not = null;
         public Games()  //Constructor
         {
+            InitializeComponent();
+        }
+        public Games(Form callingForm)
+        {
+            not = callingForm as Profile;
             InitializeComponent();
         }
         protected override void OnPaintBackground(PaintEventArgs e) //Function to @Override Background color to Gradiend
@@ -42,6 +48,24 @@ namespace minigame
             BackgammonDevelopment.Show();   //Show Warning label
             await Task.Delay(5000); //Add a delay (milisec)
             BackgammonDevelopment.Hide();   //Hide Warning label
+        }
+
+        private async void Flight_XButton_Click(object sender, EventArgs e)
+        {
+            Flight_X flight = new Flight_X();
+            Profile.ActiveForm.Hide();
+            this.Hide();
+            //this.Close();
+            flight.ShowDialog();
+            if (ActiveForm == null)
+            {
+                Profile win = new Profile();
+                win.ShowDialog();
+                await Task.Delay(2);
+                //this.not.GamesButton_Click(sender,e);
+            }
+            else
+                this.Show();
         }
     }
 }

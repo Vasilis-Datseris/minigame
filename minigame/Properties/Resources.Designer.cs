@@ -93,6 +93,16 @@ namespace minigame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Enemy {
+            get {
+                object obj = ResourceManager.GetObject("Enemy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gaming {
             get {
                 object obj = ResourceManager.GetObject("Gaming", resourceCulture);
@@ -186,6 +196,26 @@ namespace minigame.Properties {
         internal static System.Drawing.Bitmap minimize_window_sky {
             get {
                 object obj = ResourceManager.GetObject("minimize_window_sky", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Player {
+            get {
+                object obj = ResourceManager.GetObject("Player", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PlayerPlane {
+            get {
+                object obj = ResourceManager.GetObject("PlayerPlane", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

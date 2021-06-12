@@ -209,7 +209,7 @@ namespace minigame
             {
                 Minimize.FlatAppearance.MouseOverBackColor = Color.FromArgb((green + 1) / 2, 0, green, 50);
                 green += 10;
-                this.Invalidate();
+                Minimize.Invalidate();
                 await Task.Delay(delay);
             }
             green = 0;
@@ -221,7 +221,7 @@ namespace minigame
             MinimizeBlack();
             await Task.Delay(1);
             Minimize.BackColor = Color.FromArgb(0, 0, 0, 0); //Function to restore default upon leave hover on Close
-            this.Invalidate();
+            Minimize.Invalidate();
         }
 
         private async void Maximize_MouseEnter(object sender, EventArgs e)
@@ -235,7 +235,7 @@ namespace minigame
             {
                 Maximize.FlatAppearance.MouseOverBackColor = Color.FromArgb((blue + 1) / 2, 0, 55, blue);
                 blue += 10;
-                this.Invalidate();
+                Maximize.Invalidate();
                 await Task.Delay(delay);
             }
             blue = 0;
@@ -247,7 +247,7 @@ namespace minigame
             MaximizeBlack();
             await Task.Delay(1);
             Maximize.BackColor = Color.FromArgb(0, 0, 0, 0); //Function to restore default upon leave hover on Close
-            this.Invalidate();
+            Maximize.Invalidate();
         }
 
         private async void Close_MouseEnter(object sender, EventArgs e)
@@ -262,7 +262,7 @@ namespace minigame
             {
                 Close.FlatAppearance.MouseOverBackColor = Color.FromArgb((red + 1) / 2, red, 30, 0);
                 red += 10;
-                this.Invalidate();
+                Close.Invalidate();
                 await Task.Delay(delay);
             }
             red = 0;
@@ -274,7 +274,7 @@ namespace minigame
             CloseBlack();
             await Task.Delay(1);
             Close.BackColor = Color.FromArgb(0, 0, 0, 0); //Function to restore default upon leave hover on Close
-            this.Invalidate();
+            Close.Invalidate();
         }
         private void MinimizeSky()  //Function to change image on mouse Hover
             => Minimize.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.minimize_window_sky));

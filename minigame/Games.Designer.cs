@@ -30,60 +30,16 @@ namespace minigame
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Games));
-            this.SlotmachineButton = new minigame.Details();
-            this.ChessButton = new minigame.Details();
-            this.BackgammonButton = new minigame.Details();
             this.SlotmachineLabel = new System.Windows.Forms.Label();
             this.ChessLabel = new System.Windows.Forms.Label();
             this.BackgammonLabel = new System.Windows.Forms.Label();
             this.ChessDevelopment = new System.Windows.Forms.Label();
             this.BackgammonDevelopment = new System.Windows.Forms.Label();
+            this.BackgammonButton = new minigame.Details();
+            this.ChessButton = new minigame.Details();
+            this.SlotmachineButton = new minigame.Details();
+            this.Flight_XButton = new minigame.Details();
             this.SuspendLayout();
-            // 
-            // SlotmachineButton
-            // 
-            this.SlotmachineButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SlotmachineButton.BackColor = System.Drawing.Color.Transparent;
-            this.SlotmachineButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SlotmachineButton.BackgroundImage")));
-            this.SlotmachineButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.SlotmachineButton.FlatAppearance.BorderSize = 0;
-            this.SlotmachineButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SlotmachineButton.Location = new System.Drawing.Point(404, 108);
-            this.SlotmachineButton.Name = "SlotmachineButton";
-            this.SlotmachineButton.Size = new System.Drawing.Size(209, 164);
-            this.SlotmachineButton.TabIndex = 0;
-            this.SlotmachineButton.UseVisualStyleBackColor = false;
-            this.SlotmachineButton.Click += new System.EventHandler(this.SlotmachineButton_Click);
-            // 
-            // ChessButton
-            // 
-            this.ChessButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.ChessButton.BackColor = System.Drawing.Color.Transparent;
-            this.ChessButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ChessButton.BackgroundImage")));
-            this.ChessButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ChessButton.FlatAppearance.BorderSize = 0;
-            this.ChessButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ChessButton.Location = new System.Drawing.Point(404, 337);
-            this.ChessButton.Name = "ChessButton";
-            this.ChessButton.Size = new System.Drawing.Size(209, 164);
-            this.ChessButton.TabIndex = 1;
-            this.ChessButton.UseVisualStyleBackColor = false;
-            this.ChessButton.Click += new System.EventHandler(this.ChessButton_Click);
-            // 
-            // BackgammonButton
-            // 
-            this.BackgammonButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BackgammonButton.BackColor = System.Drawing.Color.Transparent;
-            this.BackgammonButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BackgammonButton.BackgroundImage")));
-            this.BackgammonButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BackgammonButton.FlatAppearance.BorderSize = 0;
-            this.BackgammonButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BackgammonButton.Location = new System.Drawing.Point(404, 574);
-            this.BackgammonButton.Name = "BackgammonButton";
-            this.BackgammonButton.Size = new System.Drawing.Size(209, 164);
-            this.BackgammonButton.TabIndex = 2;
-            this.BackgammonButton.UseVisualStyleBackColor = false;
-            this.BackgammonButton.Click += new System.EventHandler(this.BackgammonButton_Click);
             // 
             // SlotmachineLabel
             // 
@@ -156,12 +112,73 @@ namespace minigame
             this.BackgammonDevelopment.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BackgammonDevelopment.Visible = false;
             // 
+            // BackgammonButton
+            // 
+            this.BackgammonButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BackgammonButton.BackColor = System.Drawing.Color.Transparent;
+            this.BackgammonButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BackgammonButton.BackgroundImage")));
+            this.BackgammonButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackgammonButton.FlatAppearance.BorderSize = 0;
+            this.BackgammonButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BackgammonButton.Location = new System.Drawing.Point(404, 574);
+            this.BackgammonButton.Name = "BackgammonButton";
+            this.BackgammonButton.Size = new System.Drawing.Size(209, 164);
+            this.BackgammonButton.TabIndex = 2;
+            this.BackgammonButton.UseVisualStyleBackColor = false;
+            this.BackgammonButton.Click += new System.EventHandler(this.BackgammonButton_Click);
+            // 
+            // ChessButton
+            // 
+            this.ChessButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ChessButton.BackColor = System.Drawing.Color.Transparent;
+            this.ChessButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ChessButton.BackgroundImage")));
+            this.ChessButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ChessButton.FlatAppearance.BorderSize = 0;
+            this.ChessButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ChessButton.Location = new System.Drawing.Point(404, 337);
+            this.ChessButton.Name = "ChessButton";
+            this.ChessButton.Size = new System.Drawing.Size(209, 164);
+            this.ChessButton.TabIndex = 1;
+            this.ChessButton.UseVisualStyleBackColor = false;
+            this.ChessButton.Click += new System.EventHandler(this.ChessButton_Click);
+            // 
+            // SlotmachineButton
+            // 
+            this.SlotmachineButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SlotmachineButton.BackColor = System.Drawing.Color.Transparent;
+            this.SlotmachineButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SlotmachineButton.BackgroundImage")));
+            this.SlotmachineButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SlotmachineButton.FlatAppearance.BorderSize = 0;
+            this.SlotmachineButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SlotmachineButton.Location = new System.Drawing.Point(404, 108);
+            this.SlotmachineButton.Name = "SlotmachineButton";
+            this.SlotmachineButton.Size = new System.Drawing.Size(209, 164);
+            this.SlotmachineButton.TabIndex = 0;
+            this.SlotmachineButton.UseVisualStyleBackColor = false;
+            this.SlotmachineButton.Click += new System.EventHandler(this.SlotmachineButton_Click);
+            // 
+            // Flight_XButton
+            // 
+            this.Flight_XButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Flight_XButton.BackColor = System.Drawing.Color.Transparent;
+            this.Flight_XButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Flight_XButton.BackgroundImage")));
+            this.Flight_XButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Flight_XButton.FlatAppearance.BorderSize = 0;
+            this.Flight_XButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Flight_XButton.Location = new System.Drawing.Point(94, 108);
+            this.Flight_XButton.Name = "Flight_XButton";
+            this.Flight_XButton.Size = new System.Drawing.Size(209, 164);
+            this.Flight_XButton.TabIndex = 8;
+            this.Flight_XButton.UseVisualStyleBackColor = false;
+            this.Flight_XButton.Click += new System.EventHandler(this.Flight_XButton_Click);
+            // 
             // Games
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(650, 900);
+            this.Controls.Add(this.Flight_XButton);
             this.Controls.Add(this.BackgammonDevelopment);
             this.Controls.Add(this.ChessDevelopment);
             this.Controls.Add(this.BackgammonLabel);
@@ -189,5 +206,6 @@ namespace minigame
         private System.Windows.Forms.Label BackgammonLabel;
         private System.Windows.Forms.Label ChessDevelopment;
         private System.Windows.Forms.Label BackgammonDevelopment;
+        private Details Flight_XButton;
     }
 }

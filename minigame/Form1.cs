@@ -26,7 +26,8 @@ namespace minigame
             InitializeComponent();  //Run Main of Form1.Designer.cs
             DoubleBuffered = true;  //Doublebuffered to support Gradiend Colors
             StartDatabase();        //Function to Check the Database
-            
+            /*GoogleButton.Enabled = false;
+            FacebookButton.Enabled = false;*/
             Close.MouseEnter += OnMouseEnterCloses;         //Function to Highlight Close Button on Hover
             Close.MouseLeave += OnMouseLeaveCloses;         //Function to Restore Default 
             Maximize.MouseEnter += OnMouseEnterMaximizes;   //Function to Highlight Maximize Button on Hover
@@ -38,21 +39,24 @@ namespace minigame
             darkModeToolStripMenuItem.BackColor = System.Drawing.Color.SlateGray;   //Set Color of Menu, Darkmode Strip
             onToolStripMenuItem.BackColor = System.Drawing.Color.SlateGray;         //Set Color of Menu, On/Off Strip
             Variables.RegisterConfim = false;       //Set Flag to False
+            GoogleLabel.Visible = false;
+            FacebookLabel.Visible = false;
+            
         }
 
         private void GoogleButton_Click(object sender, EventArgs e) //Sign-in With Google Account
         {
-            googleForm google = new googleForm();
+            /*googleForm google = new googleForm();
             this.Hide();
             google.ShowDialog();
-            this.Show();
+            this.Show();*/
         }
         private void FacebookButton_Click(object sender, EventArgs e) //Sign-in With Facebook Account
         {
-            facebookForm facebookForm = new facebookForm(); //Create new Form to Login with Facebook
+            /*facebookForm facebookForm = new facebookForm(); //Create new Form to Login with Facebook
             Hide(); //Close Current Form
             facebookForm.ShowDialog(); //Show Facebook Form
-            Show(); //Show Current Form once Facebook Form is closed
+            Show(); //Show Current Form once Facebook Form is closed*/
         }
         protected override void OnPaintBackground(PaintEventArgs e) //Function to @Override Background color to Gradiend
         {
@@ -126,7 +130,7 @@ namespace minigame
             {
                 Close.FlatAppearance.MouseOverBackColor = Color.FromArgb((red+1)/2, red, 30, 0);
                 red += 10;
-                this.Invalidate();
+                Close.Invalidate();
                 await Task.Delay(delay);
             }
             red = 0;
@@ -137,7 +141,7 @@ namespace minigame
             CloseBlack();
             await Task.Delay(1);
             Close.BackColor = Color.FromArgb(0, 0, 0, 0); //Function to restore default upon leave hover on Close
-            this.Invalidate();
+            Close.Invalidate();
         }
         private async void OnMouseEnterMaximizes(object sender, EventArgs e)
         {
@@ -150,7 +154,7 @@ namespace minigame
             {
                 Maximize.FlatAppearance.MouseOverBackColor = Color.FromArgb((blue + 1) / 2, 0, 55, blue);
                 blue += 10;
-                this.Invalidate();
+                Maximize.Invalidate();
                 await Task.Delay(delay);
             }
             blue = 0;
@@ -161,7 +165,7 @@ namespace minigame
             MaximizeBlack();
             await Task.Delay(1);
             Maximize.BackColor = Color.FromArgb(0, 0, 0, 0); //Function to restore default upon leave hover on Close
-            this.Invalidate();
+            Maximize.Invalidate();
         }
         private async void OnMouseEnterMinimizes(object sender, EventArgs e)
         {
@@ -174,7 +178,7 @@ namespace minigame
             {
                 Minimize.FlatAppearance.MouseOverBackColor = Color.FromArgb((green + 1) / 2, 0, green, 50);
                 green += 10;
-                this.Invalidate();
+                Minimize.Invalidate();
                 await Task.Delay(delay);
             }
             green = 0;
@@ -185,7 +189,7 @@ namespace minigame
             MinimizeBlack();
             await Task.Delay(1);
             Minimize.BackColor = Color.FromArgb(0, 0, 0, 0); //Function to restore default upon leave hover on Close
-            this.Invalidate();
+            Minimize.Invalidate();
         }
         private void darkModeToolStripMenuItem_Click(object sender, EventArgs e) 
             => DarkMode_Click(sender, e);
@@ -395,6 +399,25 @@ namespace minigame
             => Maximize.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.maximize_window_black));
         private void MaximizeBlack()    //Function to change image on mouse Hover
             => Maximize.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.maximize_window));
+
+        private void GoogleButton_MouseEnter(object sender, EventArgs e)
+            => GoogleLabel.Visible = true;
+
+        private void FacebookButton_MouseEnter(object sender, EventArgs e)
+            => FacebookLabel.Visible = true;
+
+        private async void GoogleButton_MouseLeave(object sender, EventArgs e)
+        {
+            await Task.Delay(500);
+            GoogleLabel.Visible = false;
+        }
+
+        private async void FacebookButton_MouseLeave(object sender, EventArgs e)
+        {
+            await Task.Delay(500);
+            FacebookLabel.Visible = false;
+        }
+
         private void CloseSky() //Function to change image on mouse Hover
             => Close.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Close_skyt));
         private void CloseDefault() //Function to change image on mouse Hover

@@ -50,10 +50,12 @@ namespace minigame
             this.rightPanel = new System.Windows.Forms.Panel();
             this.FacebookButton = new System.Windows.Forms.Button();
             this.GoogleButton = new System.Windows.Forms.Button();
+            this.GoogleLabel = new System.Windows.Forms.Label();
+            this.FacebookLabel = new System.Windows.Forms.Label();
+            this.GuestButton = new minigame.RoundButton();
             this.DarkMode = new minigame.ToggleCheckbox();
             this.LoginButton = new minigame.RoundButton();
             this.Signup = new minigame.RoundButton();
-            this.GuestButton = new minigame.RoundButton();
             this.LoginGroupbox.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -189,7 +191,7 @@ namespace minigame
             this.windowToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 33);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -228,7 +230,7 @@ namespace minigame
             this.Close.Location = new System.Drawing.Point(749, 0);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(50, 50);
-            this.Close.TabIndex = 16;
+            this.Close.TabIndex = 10;
             this.Close.UseVisualStyleBackColor = false;
             this.Close.Click += new System.EventHandler(this.Close_Click);
             // 
@@ -243,7 +245,7 @@ namespace minigame
             this.Minimize.Location = new System.Drawing.Point(649, -2);
             this.Minimize.Name = "Minimize";
             this.Minimize.Size = new System.Drawing.Size(50, 50);
-            this.Minimize.TabIndex = 15;
+            this.Minimize.TabIndex = 8;
             this.Minimize.UseVisualStyleBackColor = false;
             this.Minimize.Click += new System.EventHandler(this.Minimize_Click);
             // 
@@ -258,7 +260,7 @@ namespace minigame
             this.Maximize.Location = new System.Drawing.Point(699, -2);
             this.Maximize.Name = "Maximize";
             this.Maximize.Size = new System.Drawing.Size(50, 50);
-            this.Maximize.TabIndex = 14;
+            this.Maximize.TabIndex = 9;
             this.Maximize.UseVisualStyleBackColor = false;
             this.Maximize.Click += new System.EventHandler(this.Maximize_Click);
             // 
@@ -297,9 +299,11 @@ namespace minigame
             this.FacebookButton.Location = new System.Drawing.Point(533, 668);
             this.FacebookButton.Name = "FacebookButton";
             this.FacebookButton.Size = new System.Drawing.Size(208, 54);
-            this.FacebookButton.TabIndex = 5;
+            this.FacebookButton.TabIndex = 6;
             this.FacebookButton.UseVisualStyleBackColor = false;
             this.FacebookButton.Click += new System.EventHandler(this.FacebookButton_Click);
+            this.FacebookButton.MouseEnter += new System.EventHandler(this.FacebookButton_MouseEnter);
+            this.FacebookButton.MouseLeave += new System.EventHandler(this.FacebookButton_MouseLeave);
             // 
             // GoogleButton
             // 
@@ -312,9 +316,57 @@ namespace minigame
             this.GoogleButton.Location = new System.Drawing.Point(51, 668);
             this.GoogleButton.Name = "GoogleButton";
             this.GoogleButton.Size = new System.Drawing.Size(201, 54);
-            this.GoogleButton.TabIndex = 4;
+            this.GoogleButton.TabIndex = 5;
             this.GoogleButton.UseVisualStyleBackColor = false;
             this.GoogleButton.Click += new System.EventHandler(this.GoogleButton_Click);
+            this.GoogleButton.MouseEnter += new System.EventHandler(this.GoogleButton_MouseEnter);
+            this.GoogleButton.MouseLeave += new System.EventHandler(this.GoogleButton_MouseLeave);
+            // 
+            // GoogleLabel
+            // 
+            this.GoogleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.GoogleLabel.AutoSize = true;
+            this.GoogleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.GoogleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GoogleLabel.Location = new System.Drawing.Point(15, 737);
+            this.GoogleLabel.Name = "GoogleLabel";
+            this.GoogleLabel.Size = new System.Drawing.Size(326, 29);
+            this.GoogleLabel.TabIndex = 17;
+            this.GoogleLabel.Text = "Currently under Development";
+            // 
+            // FacebookLabel
+            // 
+            this.FacebookLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.FacebookLabel.AutoSize = true;
+            this.FacebookLabel.BackColor = System.Drawing.Color.Transparent;
+            this.FacebookLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FacebookLabel.Location = new System.Drawing.Point(441, 737);
+            this.FacebookLabel.Name = "FacebookLabel";
+            this.FacebookLabel.Size = new System.Drawing.Size(326, 29);
+            this.FacebookLabel.TabIndex = 18;
+            this.FacebookLabel.Text = "Currently under Development";
+            // 
+            // GuestButton
+            // 
+            this.GuestButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GuestButton.BackColor = System.Drawing.Color.Transparent;
+            this.GuestButton.BorderColor = System.Drawing.Color.Transparent;
+            this.GuestButton.ButtonColor = System.Drawing.Color.Transparent;
+            this.GuestButton.FlatAppearance.BorderSize = 0;
+            this.GuestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GuestButton.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GuestButton.Location = new System.Drawing.Point(337, 580);
+            this.GuestButton.Name = "GuestButton";
+            this.GuestButton.OnHoverBorderColor = System.Drawing.Color.Transparent;
+            this.GuestButton.OnHoverButtonColor = System.Drawing.Color.Transparent;
+            this.GuestButton.OnHoverTextColor = System.Drawing.Color.Transparent;
+            this.GuestButton.Size = new System.Drawing.Size(138, 76);
+            this.GuestButton.TabIndex = 4;
+            this.GuestButton.Text = "Continue as Guest";
+            this.GuestButton.TextColor = System.Drawing.Color.Transparent;
+            this.GuestButton.UseVisualStyleBackColor = false;
+            this.GuestButton.Click += new System.EventHandler(this.GuestButton_Click);
             // 
             // DarkMode
             // 
@@ -322,14 +374,15 @@ namespace minigame
             this.DarkMode.BackColor = System.Drawing.Color.DimGray;
             this.DarkMode.BorderColor = System.Drawing.Color.DarkGray;
             this.DarkMode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DarkMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DarkMode.ForeColor = System.Drawing.Color.DarkGray;
             this.DarkMode.IsOn = false;
             this.DarkMode.Location = new System.Drawing.Point(512, -2);
             this.DarkMode.Name = "DarkMode";
             this.DarkMode.OffColor = System.Drawing.Color.LightGray;
-            this.DarkMode.OffText = "Light";
+            this.DarkMode.OffText = "L";
             this.DarkMode.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.DarkMode.OnText = "Dark";
+            this.DarkMode.OnText = "D";
             this.DarkMode.Size = new System.Drawing.Size(66, 35);
             this.DarkMode.TabIndex = 7;
             this.DarkMode.TextEnabled = true;
@@ -375,34 +428,14 @@ namespace minigame
             this.Signup.UseVisualStyleBackColor = true;
             this.Signup.Click += new System.EventHandler(this.Signup_Click);
             // 
-            // GuestButton
-            // 
-            this.GuestButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.GuestButton.BackColor = System.Drawing.Color.Transparent;
-            this.GuestButton.BorderColor = System.Drawing.Color.Transparent;
-            this.GuestButton.ButtonColor = System.Drawing.Color.Transparent;
-            this.GuestButton.FlatAppearance.BorderSize = 0;
-            this.GuestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GuestButton.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GuestButton.Location = new System.Drawing.Point(327, 580);
-            this.GuestButton.Name = "GuestButton";
-            this.GuestButton.OnHoverBorderColor = System.Drawing.Color.Transparent;
-            this.GuestButton.OnHoverButtonColor = System.Drawing.Color.Transparent;
-            this.GuestButton.OnHoverTextColor = System.Drawing.Color.Transparent;
-            this.GuestButton.Size = new System.Drawing.Size(138, 76);
-            this.GuestButton.TabIndex = 5;
-            this.GuestButton.Text = "Continue as Guest";
-            this.GuestButton.TextColor = System.Drawing.Color.Transparent;
-            this.GuestButton.UseVisualStyleBackColor = false;
-            this.GuestButton.Click += new System.EventHandler(this.GuestButton_Click);
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(800, 956);
+            this.Controls.Add(this.FacebookLabel);
+            this.Controls.Add(this.GoogleLabel);
             this.Controls.Add(this.GuestButton);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.Minimize);
@@ -458,6 +491,8 @@ namespace minigame
         private System.Windows.Forms.Button Minimize;
         private System.Windows.Forms.Button Close;
         private RoundButton GuestButton;
+        private System.Windows.Forms.Label GoogleLabel;
+        private System.Windows.Forms.Label FacebookLabel;
     }
 }
 

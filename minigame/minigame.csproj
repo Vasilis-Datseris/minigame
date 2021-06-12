@@ -100,6 +100,7 @@
     <Compile Include="AboutGame.Designer.cs">
       <DependentUpon>AboutGame.cs</DependentUpon>
     </Compile>
+    <Compile Include="Base.cs" />
     <Compile Include="ChangePicture.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +126,12 @@
     <Compile Include="facebookForm.Designer.cs">
       <DependentUpon>facebookForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Flight X.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flight X.Designer.cs">
+      <DependentUpon>Flight X.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +154,9 @@
     </Compile>
     <Compile Include="googleForm.Designer.cs">
       <DependentUpon>googleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GradientPanel.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="MyRectangle.cs" />
     <Compile Include="Profile.cs">
@@ -222,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="facebookForm.resx">
       <DependentUpon>facebookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flight X.resx">
+      <DependentUpon>Flight X.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -355,6 +368,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\google.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Player.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Enemy.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PlayerPlane.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
