@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="700">
     <Grid>
-        <Rectangle Fill="#FF9EE626" HorizontalAlignment="Left" Height="49" Margin="217,104,0,0" Stroke="#FF9B9B9B" VerticalAlignment="Top" Width="145" RadiusY="31.055" RadiusX="31.055"/>
+        <Rectangle Fill="red" HorizontalAlignment="Left" Height="49" Margin="217,104,0,0" Stroke="#FF9B9B9B" VerticalAlignment="Top" Width="145" RadiusY="31.055" RadiusX="31.055"/>
 
     </Grid>
 </UserControl>

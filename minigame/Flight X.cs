@@ -20,7 +20,7 @@ namespace minigame
             DoubleBuffered = true;
             usernameLabel.Text = Variables.Username;    //Set Username
             belowHalfHP.SendToBack();   //Align Player HealthBar
-            GeneralTimer.Interval = 20;   //Set the clock Interval
+            GeneralTimer.Interval = 2000;   //Set the clock Interval
             GeneralTimer.Start(); //Initiate our Timer
             ultimate.Width = 0;
             cycleLevels();

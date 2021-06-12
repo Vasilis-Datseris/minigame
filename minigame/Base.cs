@@ -32,7 +32,7 @@ namespace minigame
         [Required]
         public int moveSpeed { set; get; }
         [Required]
-        public static bool alive { set; get; }
+        public bool alive { set; get; }
 
     }
 }
