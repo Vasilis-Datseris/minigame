@@ -38,6 +38,7 @@ namespace minigame
             this.playerHP = new System.Windows.Forms.Panel();
             this.belowHalfHP = new minigame.GradientPanel();
             this.aboveHalfHP = new minigame.GradientPanel();
+            this.BulletTimer = new System.Windows.Forms.Timer(this.components);
             this.topPanel = new minigame.GradientPanel();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.Maximize = new System.Windows.Forms.Button();
@@ -143,6 +144,10 @@ namespace minigame
             this.aboveHalfHP.TabIndex = 24;
             this.aboveHalfHP.Top = System.Drawing.Color.Lime;
             // 
+            // BulletTimer
+            // 
+            this.BulletTimer.Tick += new System.EventHandler(this.BulletTimer_Tick);
+            // 
             // topPanel
             // 
             this.topPanel.Angle = 90F;
@@ -178,6 +183,7 @@ namespace minigame
             this.Maximize.BackgroundImage = global::minigame.Properties.Resources.maximize_window_black;
             this.Maximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Maximize.FlatAppearance.BorderSize = 0;
+            this.Maximize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cornsilk;
             this.Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Maximize.Location = new System.Drawing.Point(699, 0);
             this.Maximize.Name = "Maximize";
@@ -303,6 +309,7 @@ namespace minigame
             this.Minimize.BackgroundImage = global::minigame.Properties.Resources.minimize_window_black;
             this.Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Minimize.FlatAppearance.BorderSize = 0;
+            this.Minimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cornsilk;
             this.Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Minimize.Location = new System.Drawing.Point(649, 0);
             this.Minimize.Name = "Minimize";
@@ -318,6 +325,7 @@ namespace minigame
             this.Close.BackgroundImage = global::minigame.Properties.Resources.Close_black;
             this.Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Close.FlatAppearance.BorderSize = 0;
+            this.Close.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cornsilk;
             this.Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Close.Location = new System.Drawing.Point(749, 2);
             this.Close.Name = "Close";
@@ -428,5 +436,6 @@ namespace minigame
         private System.Windows.Forms.Panel playerHP;
         private GradientPanel belowHalfHP;
         private GradientPanel aboveHalfHP;
+        private System.Windows.Forms.Timer BulletTimer;
     }
 }

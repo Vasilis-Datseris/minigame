@@ -10,8 +10,15 @@ namespace minigame
     {
         int x, z;
         bool bombInternal = true, fireGunInternal = true, ultimateReady = false, goUp = false, goDown = false, goRight = false, goLeft = false, goBomb = false, goGun = false;
+        string currentLevel;
 
         Base playerCharacter = new Base(100, 99, 10, 3, 25, 5, true);    //Initialize Player's object Class
+        Base enemyFlying = new Base(10, 10, 0, 15, 0, 10, false);   //Initialize Flying enemy
+        Base enemyArmy = new Base(5, 15, 0, 10, 0, 10, false);   //Initialize Army enemy
+        Base enemyTank = new Base(20, 0, 5, 0, 20, 10, false);   //Initialize Tank enemy
+        Base enemyBoat = new Base(20, 15, 5, 10, 10, 10, false);   //Initialize Boat enemy
+        Base enemyBoss = new Base(50, 15, 15, 30, 15, 10, false);   //Initialize Boss enemy
+        
         //Bitmap bmp = new Bitmap(minigame.Properties.Resources.Player);
 
         public Flight_X()
@@ -20,13 +27,13 @@ namespace minigame
             DoubleBuffered = true;
             usernameLabel.Text = Variables.Username;    //Set Username
             belowHalfHP.SendToBack();   //Align Player HealthBar
-            GeneralTimer.Interval = 2000;   //Set the clock Interval
+            GeneralTimer.Interval = 20;   //Set the clock Interval
             GeneralTimer.Start(); //Initiate our Timer
             ultimate.Width = 0;
             cycleLevels();
             //rotation(bmp, 15);
             //Player.Image = bmp;
-            
+            createEnemyAir();
         }
 
         protected override void OnPaintBackground(PaintEventArgs e) //Overriden System's Function
@@ -50,6 +57,7 @@ namespace minigame
             groundBottomPanel.Top = Color.RoyalBlue;
             groundBottomPanel.Bottom = Color.Navy;
             groundPanel.Invalidate();
+            currentLevel = "Sea";
         }
         private void bringDessert() // Dessert Level
         {
@@ -60,6 +68,7 @@ namespace minigame
             groundBottomPanel.Top = Color.DarkGoldenrod;
             groundBottomPanel.Bottom = Color.DarkOrange;
             groundPanel.Invalidate();
+            currentLevel = "Dessert";
         }
         private void bringJungle()  // Jungler Level
         {
@@ -70,6 +79,7 @@ namespace minigame
             groundBottomPanel.Top = Color.DarkGreen;
             groundBottomPanel.Bottom = Color.Olive;
             groundPanel.Invalidate();
+            currentLevel = "Jungle";
         }
         private void Close_Click(object sender, EventArgs e)   //Close Button
             => this.Close();
@@ -88,10 +98,7 @@ namespace minigame
             await Task.Delay(1);   //Set Delay
             this.Invalidate();  //Refresh colors
         }
-        private async void playerAnimation()    //Player's Gif Animation
-        {
-
-        }
+       
 
         private async void cycleLevels()
         {
@@ -102,7 +109,7 @@ namespace minigame
             bringSea();
         }
 
-        private async void Flight_X_KeyUp(object sender, KeyEventArgs e)
+        private void Flight_X_KeyUp(object sender, KeyEventArgs e)  //Set Boolean values to false
         {
             if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up)
                 goUp = false;
@@ -113,14 +120,15 @@ namespace minigame
             if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right)
                 goRight = false;
             if (e.KeyCode == Keys.Space)
-                goBomb = false;
-            if (e.KeyCode == Keys.B)
                 goGun = false;
+            if (e.KeyCode == Keys.B)
+                goBomb = false;
         }
 
-        private async void Flight_X_KeyDown(object sender, KeyEventArgs e)    //User inputs to handle airplane
+        private async void Flight_X_KeyDown(object sender, KeyEventArgs e)    //User's Movement
         {
-            Console.WriteLine(e.KeyCode);
+            e.SuppressKeyPress = true;
+            //Console.WriteLine(e.KeyCode);
             if (e.KeyCode == Keys.W || e.KeyData == Keys.Up)
                 goUp = true;
             if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down)
@@ -130,9 +138,9 @@ namespace minigame
             if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right)
                 goRight = true;
             if (e.KeyCode == Keys.Space)
-                goBomb = true;
-            if (e.KeyCode == Keys.B)
                 goGun = true; 
+            if (e.KeyCode == Keys.B)
+                goBomb = true;
 
             if (goUp)    //Assign W to move Up
             {
@@ -156,18 +164,18 @@ namespace minigame
                 if (Player.Location.X + Player.Width < flyingEnemyPanel.Location.X)
                     Player.Location = new Point(Player.Location.X + playerCharacter.moveSpeed, Player.Location.Y);  //Move Right
             }
-            if (goBomb && fireGunInternal)   //Assign Spacebar to fire ammo
+            if (goGun  && fireGunInternal)   //Assign Spacebar to fire ammo
             {
                 e.SuppressKeyPress = true;  //Make Space button unusable
                 fireGunInternal = false;
-                await Task.Delay(2);        //Adjust FireRate
+                await Task.Delay(100);        //Adjust FireRate
                 if (playerCharacter.bullets > 0)
                     fireGun();
                 else
                     reloadGun();
                 fireGunInternal = true;
             }
-            if (goGun && bombInternal)   //Assign B to drop bombs
+            if (goBomb && bombInternal)   //Assign B to drop bombs
             {
                 bombInternal = false;
                 await Task.Delay(500);  //Adjust FireRate
@@ -190,6 +198,40 @@ namespace minigame
 
         }
 
+        private void createEnemyAir()
+        {
+            if (!enemyFlying.alive)
+            {
+                flyingEnemy.Location = new Point(flyingEnemyPanel.Width, flyingEnemy.Location.Y);
+                enemyFlying.alive = true;
+                enemyFlying.HP = 10;
+                enemyFlying.bullets = 10;
+                flyingEnemy.Visible = true;
+                enemyDefaultMovement();
+            }
+        }
+
+        private void BulletTimer_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void enemyDefaultMovement()
+        {
+            if(playerCharacter.alive)
+            {
+                if(enemyFlying.alive && flyingEnemy.Left > 0)
+                    flyingEnemy.Location = new Point(flyingEnemy.Location.X - enemyFlying.moveSpeed, flyingEnemy.Location.Y);
+                if(enemyTank.alive && flyingEnemy.Left > 0)
+                    flyingEnemy.Location = new Point(flyingEnemy.Location.X - enemyFlying.moveSpeed, flyingEnemy.Location.Y);
+                if(enemyArmy.alive && flyingEnemy.Left > 0)
+                    flyingEnemy.Location = new Point(flyingEnemy.Location.X - enemyFlying.moveSpeed, flyingEnemy.Location.Y);
+                if(enemyBoat.alive && flyingEnemy.Left > 0)
+                    flyingEnemy.Location = new Point(flyingEnemy.Location.X - enemyFlying.moveSpeed, flyingEnemy.Location.Y);
+
+            }
+        }
+
         private void timer1_Tick(object sender, EventArgs e)    //Passive Timer
         {
             if (ultimate.Width < 169)
@@ -205,11 +247,17 @@ namespace minigame
             
             if (ultimate.Width % 10 == 0 && ultimate.Width != 170)
                 ultimate.Refresh();
+
+            if (enemyFlying.alive || enemyArmy.alive 
+                || enemyBoat.alive || enemyTank.alive 
+                || enemyBoss.alive)
+                enemyDefaultMovement();
         }
         private void fireGun()
         {
             --playerCharacter.bullets;
             bulletsLabel.Text = "Bullets : " + playerCharacter.bullets;
+            playerBullets();
         }
         private void dropBomb()
         {
@@ -245,6 +293,39 @@ namespace minigame
             grs.DrawImage(image, new Point(0, 0));
             grs.Dispose();
             return bmp;
+        }
+        private async void playerBullets()
+        {
+            GradientPanel panel = new GradientPanel();
+            Controls.Add(panel);
+            panel.Width = 5;
+            panel.Height = 3;
+            //panel.Size = new Size(50, 20);
+            panel.Name = "Bullet";
+            panel.Top = Color.Black;
+            panel.Bottom = Color.Red;
+            panel.Angle = 0;
+            panel.Location = new Point(Player.Right, Player.Top + Player.Height / 2);
+            //Console.WriteLine("Bullet {0} created at {1},{2] with {3} size", panel.Name, panel.Height, panel.Width, panel.Size);
+            Console.WriteLine(Player.Right+"/top"+ (Player.Top + Player.Height / 2) + " \nflying enemy panel right :"+flyingEnemyPanel.Right);
+            panel.BringToFront();
+            //panel.SendToBack();
+
+            while(panel.Right < flyingEnemyPanel.Right)
+            {
+                panel.Location = new Point(panel.Location.X + 5, panel.Location.Y);
+                await Task.Delay(50);
+                if (panel.Right > flyingEnemy.Left 
+                    && panel.Right < flyingEnemy.Right 
+                    && panel.Bounds.Bottom > flyingEnemy.Bottom + 30 
+                    && panel.Bounds.Bottom < flyingEnemy.Top - 30)
+                {
+                    enemyFlying.HP -= playerCharacter.bulletDamage;
+                    panel.Dispose();
+                    if (enemyFlying.HP <= 0)
+                        enemyFlying.alive = false;
+                }    
+            }
         }
     }
 }

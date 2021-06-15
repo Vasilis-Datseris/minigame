@@ -43,6 +43,12 @@ namespace minigame
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GoogleLabel = new System.Windows.Forms.Label();
+            this.FacebookLabel = new System.Windows.Forms.Label();
+            this.GuestButton = new minigame.RoundButton();
+            this.DarkMode = new minigame.ToggleCheckbox();
+            this.LoginButton = new minigame.RoundButton();
+            this.Signup = new minigame.RoundButton();
             this.Close = new System.Windows.Forms.Button();
             this.Minimize = new System.Windows.Forms.Button();
             this.Maximize = new System.Windows.Forms.Button();
@@ -50,12 +56,6 @@ namespace minigame
             this.rightPanel = new System.Windows.Forms.Panel();
             this.FacebookButton = new System.Windows.Forms.Button();
             this.GoogleButton = new System.Windows.Forms.Button();
-            this.GoogleLabel = new System.Windows.Forms.Label();
-            this.FacebookLabel = new System.Windows.Forms.Label();
-            this.GuestButton = new minigame.RoundButton();
-            this.DarkMode = new minigame.ToggleCheckbox();
-            this.LoginButton = new minigame.RoundButton();
-            this.Signup = new minigame.RoundButton();
             this.LoginGroupbox.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -191,7 +191,7 @@ namespace minigame
             this.windowToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 36);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -200,7 +200,7 @@ namespace minigame
             this.windowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.darkModeToolStripMenuItem});
             this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
-            this.windowToolStripMenuItem.Size = new System.Drawing.Size(94, 29);
+            this.windowToolStripMenuItem.Size = new System.Drawing.Size(94, 30);
             this.windowToolStripMenuItem.Text = "Window";
             // 
             // darkModeToolStripMenuItem
@@ -218,109 +218,6 @@ namespace minigame
             this.onToolStripMenuItem.Name = "onToolStripMenuItem";
             this.onToolStripMenuItem.Size = new System.Drawing.Size(140, 34);
             this.onToolStripMenuItem.Text = "Off";
-            // 
-            // Close
-            // 
-            this.Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Close.BackColor = System.Drawing.Color.Transparent;
-            this.Close.BackgroundImage = global::minigame.Properties.Resources.Close_black;
-            this.Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Close.FlatAppearance.BorderSize = 0;
-            this.Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Close.Location = new System.Drawing.Point(749, 0);
-            this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(50, 50);
-            this.Close.TabIndex = 10;
-            this.Close.UseVisualStyleBackColor = false;
-            this.Close.Click += new System.EventHandler(this.Close_Click);
-            // 
-            // Minimize
-            // 
-            this.Minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Minimize.BackColor = System.Drawing.Color.Transparent;
-            this.Minimize.BackgroundImage = global::minigame.Properties.Resources.minimize_window_black;
-            this.Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Minimize.FlatAppearance.BorderSize = 0;
-            this.Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Minimize.Location = new System.Drawing.Point(649, -2);
-            this.Minimize.Name = "Minimize";
-            this.Minimize.Size = new System.Drawing.Size(50, 50);
-            this.Minimize.TabIndex = 8;
-            this.Minimize.UseVisualStyleBackColor = false;
-            this.Minimize.Click += new System.EventHandler(this.Minimize_Click);
-            // 
-            // Maximize
-            // 
-            this.Maximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Maximize.BackColor = System.Drawing.Color.Transparent;
-            this.Maximize.BackgroundImage = global::minigame.Properties.Resources.maximize_window_black;
-            this.Maximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Maximize.FlatAppearance.BorderSize = 0;
-            this.Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Maximize.Location = new System.Drawing.Point(699, -2);
-            this.Maximize.Name = "Maximize";
-            this.Maximize.Size = new System.Drawing.Size(50, 50);
-            this.Maximize.TabIndex = 9;
-            this.Maximize.UseVisualStyleBackColor = false;
-            this.Maximize.Click += new System.EventHandler(this.Maximize_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel1.Location = new System.Drawing.Point(20, 344);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(283, 312);
-            this.panel1.TabIndex = 9;
-            // 
-            // rightPanel
-            // 
-            this.rightPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rightPanel.BackColor = System.Drawing.Color.Transparent;
-            this.rightPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rightPanel.BackgroundImage")));
-            this.rightPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rightPanel.Location = new System.Drawing.Point(484, 344);
-            this.rightPanel.Name = "rightPanel";
-            this.rightPanel.Size = new System.Drawing.Size(283, 312);
-            this.rightPanel.TabIndex = 8;
-            // 
-            // FacebookButton
-            // 
-            this.FacebookButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.FacebookButton.BackColor = System.Drawing.Color.Transparent;
-            this.FacebookButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FacebookButton.BackgroundImage")));
-            this.FacebookButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FacebookButton.FlatAppearance.BorderSize = 0;
-            this.FacebookButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.FacebookButton.Location = new System.Drawing.Point(533, 668);
-            this.FacebookButton.Name = "FacebookButton";
-            this.FacebookButton.Size = new System.Drawing.Size(208, 54);
-            this.FacebookButton.TabIndex = 6;
-            this.FacebookButton.UseVisualStyleBackColor = false;
-            this.FacebookButton.Click += new System.EventHandler(this.FacebookButton_Click);
-            this.FacebookButton.MouseEnter += new System.EventHandler(this.FacebookButton_MouseEnter);
-            this.FacebookButton.MouseLeave += new System.EventHandler(this.FacebookButton_MouseLeave);
-            // 
-            // GoogleButton
-            // 
-            this.GoogleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.GoogleButton.BackColor = System.Drawing.Color.Transparent;
-            this.GoogleButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GoogleButton.BackgroundImage")));
-            this.GoogleButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.GoogleButton.FlatAppearance.BorderSize = 0;
-            this.GoogleButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoogleButton.Location = new System.Drawing.Point(51, 668);
-            this.GoogleButton.Name = "GoogleButton";
-            this.GoogleButton.Size = new System.Drawing.Size(201, 54);
-            this.GoogleButton.TabIndex = 5;
-            this.GoogleButton.UseVisualStyleBackColor = false;
-            this.GoogleButton.Click += new System.EventHandler(this.GoogleButton_Click);
-            this.GoogleButton.MouseEnter += new System.EventHandler(this.GoogleButton_MouseEnter);
-            this.GoogleButton.MouseLeave += new System.EventHandler(this.GoogleButton_MouseLeave);
             // 
             // GoogleLabel
             // 
@@ -427,6 +324,109 @@ namespace minigame
             this.Signup.TextColor = System.Drawing.Color.Gainsboro;
             this.Signup.UseVisualStyleBackColor = true;
             this.Signup.Click += new System.EventHandler(this.Signup_Click);
+            // 
+            // Close
+            // 
+            this.Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Close.BackColor = System.Drawing.Color.Transparent;
+            this.Close.BackgroundImage = global::minigame.Properties.Resources.Close_black;
+            this.Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Close.FlatAppearance.BorderSize = 0;
+            this.Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Close.Location = new System.Drawing.Point(749, 0);
+            this.Close.Name = "Close";
+            this.Close.Size = new System.Drawing.Size(50, 50);
+            this.Close.TabIndex = 10;
+            this.Close.UseVisualStyleBackColor = false;
+            this.Close.Click += new System.EventHandler(this.Close_Click);
+            // 
+            // Minimize
+            // 
+            this.Minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Minimize.BackColor = System.Drawing.Color.Transparent;
+            this.Minimize.BackgroundImage = global::minigame.Properties.Resources.minimize_window_black;
+            this.Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Minimize.FlatAppearance.BorderSize = 0;
+            this.Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Minimize.Location = new System.Drawing.Point(649, -2);
+            this.Minimize.Name = "Minimize";
+            this.Minimize.Size = new System.Drawing.Size(50, 50);
+            this.Minimize.TabIndex = 8;
+            this.Minimize.UseVisualStyleBackColor = false;
+            this.Minimize.Click += new System.EventHandler(this.Minimize_Click);
+            // 
+            // Maximize
+            // 
+            this.Maximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Maximize.BackColor = System.Drawing.Color.Transparent;
+            this.Maximize.BackgroundImage = global::minigame.Properties.Resources.maximize_window_black;
+            this.Maximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Maximize.FlatAppearance.BorderSize = 0;
+            this.Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Maximize.Location = new System.Drawing.Point(699, -2);
+            this.Maximize.Name = "Maximize";
+            this.Maximize.Size = new System.Drawing.Size(50, 50);
+            this.Maximize.TabIndex = 9;
+            this.Maximize.UseVisualStyleBackColor = false;
+            this.Maximize.Click += new System.EventHandler(this.Maximize_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = global::minigame.Properties.Resources.Dice;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Location = new System.Drawing.Point(20, 344);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(283, 312);
+            this.panel1.TabIndex = 9;
+            // 
+            // rightPanel
+            // 
+            this.rightPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rightPanel.BackColor = System.Drawing.Color.Transparent;
+            this.rightPanel.BackgroundImage = global::minigame.Properties.Resources.glass_chess;
+            this.rightPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rightPanel.Location = new System.Drawing.Point(484, 344);
+            this.rightPanel.Name = "rightPanel";
+            this.rightPanel.Size = new System.Drawing.Size(283, 312);
+            this.rightPanel.TabIndex = 8;
+            // 
+            // FacebookButton
+            // 
+            this.FacebookButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.FacebookButton.BackColor = System.Drawing.Color.Transparent;
+            this.FacebookButton.BackgroundImage = global::minigame.Properties.Resources.facebook_sign_in_button_cropped;
+            this.FacebookButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FacebookButton.FlatAppearance.BorderSize = 0;
+            this.FacebookButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.FacebookButton.Location = new System.Drawing.Point(533, 668);
+            this.FacebookButton.Name = "FacebookButton";
+            this.FacebookButton.Size = new System.Drawing.Size(208, 54);
+            this.FacebookButton.TabIndex = 6;
+            this.FacebookButton.UseVisualStyleBackColor = false;
+            this.FacebookButton.Click += new System.EventHandler(this.FacebookButton_Click);
+            this.FacebookButton.MouseEnter += new System.EventHandler(this.FacebookButton_MouseEnter);
+            this.FacebookButton.MouseLeave += new System.EventHandler(this.FacebookButton_MouseLeave);
+            // 
+            // GoogleButton
+            // 
+            this.GoogleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.GoogleButton.BackColor = System.Drawing.Color.Transparent;
+            this.GoogleButton.BackgroundImage = global::minigame.Properties.Resources.googleimage_cropped;
+            this.GoogleButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.GoogleButton.FlatAppearance.BorderSize = 0;
+            this.GoogleButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.GoogleButton.Location = new System.Drawing.Point(51, 668);
+            this.GoogleButton.Name = "GoogleButton";
+            this.GoogleButton.Size = new System.Drawing.Size(201, 54);
+            this.GoogleButton.TabIndex = 5;
+            this.GoogleButton.UseVisualStyleBackColor = false;
+            this.GoogleButton.Click += new System.EventHandler(this.GoogleButton_Click);
+            this.GoogleButton.MouseEnter += new System.EventHandler(this.GoogleButton_MouseEnter);
+            this.GoogleButton.MouseLeave += new System.EventHandler(this.GoogleButton_MouseLeave);
             // 
             // LoginForm
             // 

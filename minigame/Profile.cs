@@ -290,6 +290,12 @@ namespace minigame
             => Maximize.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.maximize_window));
         private void CloseSky() //Function to change image on mouse Hover
             => Close.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Close_skyt));
+
+        private void Profile_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void CloseDefault() //Function to change image on mouse Hover
             => Close.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Close_black));
         private void CloseBlack()   //Function to change image on mouse Hover

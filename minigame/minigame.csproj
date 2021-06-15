@@ -378,5 +378,17 @@
   <ItemGroup>
     <None Include="Resources\PlayerPlane.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glass_chess.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\googleimage_cropped.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\facebook-sign-in-button_cropped.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

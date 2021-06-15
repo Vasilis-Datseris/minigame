@@ -393,6 +393,7 @@ namespace minigame
             this.Name = "Profile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Profile";
+            this.Load += new System.EventHandler(this.Profile_Load);
             this.SidePanel.ResumeLayout(false);
             this.Images.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LogoutPicture)).EndInit();
