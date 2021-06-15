@@ -11,6 +11,7 @@ namespace minigame
         int x, z;
         bool bombInternal = true, fireGunInternal = true, ultimateReady = false, goUp = false, goDown = false, goRight = false, goLeft = false, goBomb = false, goGun = false;
         string currentLevel;
+        Random random = new Random();
 
         Base playerCharacter = new Base(100, 99, 10, 3, 25, 5, true);    //Initialize Player's object Class
         Base enemyFlying = new Base(10, 10, 0, 15, 0, 10, false);   //Initialize Flying enemy
@@ -27,7 +28,7 @@ namespace minigame
             DoubleBuffered = true;
             usernameLabel.Text = Variables.Username;    //Set Username
             belowHalfHP.SendToBack();   //Align Player HealthBar
-            GeneralTimer.Interval = 20;   //Set the clock Interval
+            GeneralTimer.Interval = 100;   //Set the clock Interval
             GeneralTimer.Start(); //Initiate our Timer
             ultimate.Width = 0;
             cycleLevels();
@@ -111,17 +112,17 @@ namespace minigame
 
         private void Flight_X_KeyUp(object sender, KeyEventArgs e)  //Set Boolean values to false
         {
-            if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up)
+            if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up)    //Set boolean for Upwards movement to True
                 goUp = false;
-            if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down)
+            if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down)  //Set boolean for Downwards movement to True
                 goDown = false;
-            if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left)
+            if (e.KeyCode == Keys.A || e.KeyCode == Keys.Left)  //Set boolean for Left movement to True
                 goLeft = false;
-            if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right)
+            if (e.KeyCode == Keys.D || e.KeyCode == Keys.Right) //Set boolean for Right movement to True
                 goRight = false;
-            if (e.KeyCode == Keys.Space)
+            if (e.KeyCode == Keys.Space)    //Set boolean for Fire Gun to True
                 goGun = false;
-            if (e.KeyCode == Keys.B)
+            if (e.KeyCode == Keys.B)    //Set boolean for Dropping Bomb to True
                 goBomb = false;
         }
 
@@ -198,11 +199,11 @@ namespace minigame
 
         }
 
-        private void createEnemyAir()
+        private void createEnemyAir()   //Spawn Enemy Helicopter
         {
             if (!enemyFlying.alive)
             {
-                flyingEnemy.Location = new Point(flyingEnemyPanel.Width, flyingEnemy.Location.Y);
+                flyingEnemy.Location = new Point(flyingEnemyPanel.Width, random.Next(50, 150));
                 enemyFlying.alive = true;
                 enemyFlying.HP = 10;
                 enemyFlying.bullets = 10;
@@ -294,7 +295,7 @@ namespace minigame
             grs.Dispose();
             return bmp;
         }
-        private async void playerBullets()
+        private async void playerBullets()  //Function to Create custom Player's bullets
         {
             GradientPanel panel = new GradientPanel();
             Controls.Add(panel);
@@ -306,26 +307,39 @@ namespace minigame
             panel.Bottom = Color.Red;
             panel.Angle = 0;
             panel.Location = new Point(Player.Right, Player.Top + Player.Height / 2);
-            //Console.WriteLine("Bullet {0} created at {1},{2] with {3} size", panel.Name, panel.Height, panel.Width, panel.Size);
-            Console.WriteLine(Player.Right+"/top"+ (Player.Top + Player.Height / 2) + " \nflying enemy panel right :"+flyingEnemyPanel.Right);
             panel.BringToFront();
             //panel.SendToBack();
 
             while(panel.Right < flyingEnemyPanel.Right)
             {
+                
+                //Console.WriteLine("Bullet:\n Right : {0} Top : {1} \n Panel: \n Left : {2] Right : {3} \n Flying : \n Left {4} Right {5} Top {6} Bottom {7}", panel.Right, panel.Bounds.Top, flyingEnemyPanel.Left, flyingEnemyPanel.Bounds.Right, flyingEnemy.Left, flyingEnemy.Bounds.Right, flyingEnemy.Top, flyingEnemy.Bounds.Bottom);
+                Console.WriteLine("\nBullet:\n Right : " + panel.Right + " | Top : " + panel.Bounds.Top + 
+                                    "\nPanel:\n Left : " + flyingEnemyPanel.Left + " | Right : " + flyingEnemyPanel.Bounds.Right + 
+                                    "\nFlying:\n Left : " + flyingEnemy.Left + " | Right : " + flyingEnemy.Bounds.Right + " | Top : " + flyingEnemy.Bounds.Top + " | Bottom : " + flyingEnemy.Bottom);
                 panel.Location = new Point(panel.Location.X + 5, panel.Location.Y);
                 await Task.Delay(50);
-                if (panel.Right > flyingEnemy.Left 
-                    && panel.Right < flyingEnemy.Right 
-                    && panel.Bounds.Bottom > flyingEnemy.Bottom + 30 
-                    && panel.Bounds.Bottom < flyingEnemy.Top - 30)
+                if (panel.Bounds.Right - flyingEnemy.Width * 2 > flyingEnemy.Left
+                    && panel.Bounds.Right - flyingEnemy.Width * 2 < flyingEnemy.Right
+                    && panel.Bounds.Top - flyingEnemy.Height / 2 < flyingEnemy.Bottom - 30
+                    && panel.Bounds.Top - flyingEnemy.Height / 2 > flyingEnemy.Top + 30
+                    && enemyFlying.alive)
                 {
                     enemyFlying.HP -= playerCharacter.bulletDamage;
+                    ultimate.Width += 3;
                     panel.Dispose();
                     if (enemyFlying.HP <= 0)
+                    {
                         enemyFlying.alive = false;
-                }    
+                        flyingEnemy.Visible = false;
+                        await Task.Delay(500);
+                        createEnemyAir();
+                    }
+                }
+                panel.Invalidate();
             }
+            
+            panel.Dispose();
         }
     }
 }
