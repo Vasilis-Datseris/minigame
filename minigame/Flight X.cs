@@ -8,7 +8,7 @@ namespace minigame
 {
     public partial class Flight_X : Form
     {
-        int x, z;
+        int x, z, enemiesKilled = 0;
         bool bombInternal = true, fireGunInternal = true, ultimateReady = false, goUp = false, goDown = false, goRight = false, goLeft = false, goBomb = false, goGun = false;
         string currentLevel;
         Random random = new Random();
@@ -103,11 +103,26 @@ namespace minigame
 
         private async void cycleLevels()
         {
-            bringDessert();
-            await Task.Delay(5000);
-            bringJungle();
-            await Task.Delay(5000);
-            bringSea();
+            await Task.Delay(10000);
+            int a = random.Next(1, 3);
+            if(a == 1)
+            {
+                currentLevel = "Sea";
+                bringSea();
+            }    
+            else if (a == 2)
+            {
+                currentLevel = "Dessert";
+                bringDessert();
+            }
+            else if (a == 3)
+            {
+                currentLevel = "Jungle";
+                bringJungle();
+            }
+            groundPanel.Invalidate();
+            groundBottomPanel.Invalidate();
+            groundTopPanel.Invalidate();
         }
 
         private void Flight_X_KeyUp(object sender, KeyEventArgs e)  //Set Boolean values to false
@@ -212,6 +227,41 @@ namespace minigame
             }
         }
 
+        private void createEnemyGround()    //Spawn Ground enemy Based on Level
+        {
+            if(!enemyArmy.alive && !enemyBoat.alive && !enemyTank.alive)
+            {
+                if(currentLevel == "Sea")
+                {
+                    groundEnemy.Image = minigame.Properties.Resources.ship;
+                    groundEnemy.Location = new Point(groundPanel.Right, groundBottomPanel.Bounds.Top);
+                    enemyBoat.alive = true;
+                    enemyBoat.HP = 20;
+                    enemyBoat.bullets = 15;
+                    enemyBoat.bombs = 5;
+                    groundEnemy.Visible = true;
+                }
+                if(currentLevel == "Dessert")
+                {
+                    groundEnemy.Image = minigame.Properties.Resources.tank;
+                    groundEnemy.Location = new Point(groundPanel.Right, groundBottomPanel.Bounds.Top);
+                    enemyTank.alive = true;
+                    enemyTank.HP = 20;
+                    enemyTank.bombs = 5;
+                    groundEnemy.Visible = true;
+                }
+                if(currentLevel == "Jungle")
+                {
+                    groundEnemy.Image = minigame.Properties.Resources.army;
+                    groundEnemy.Location = new Point(groundPanel.Right, groundBottomPanel.Bounds.Top);
+                    enemyArmy.alive = true;
+                    enemyArmy.HP = 5;
+                    enemyArmy.bullets = 15;
+                    groundEnemy.Visible = true;
+                }    
+            }
+        }
+
         private void BulletTimer_Tick(object sender, EventArgs e)
         {
 
@@ -223,12 +273,12 @@ namespace minigame
             {
                 if(enemyFlying.alive && flyingEnemy.Left > 0)
                     flyingEnemy.Location = new Point(flyingEnemy.Location.X - enemyFlying.moveSpeed, flyingEnemy.Location.Y);
-                if(enemyTank.alive && flyingEnemy.Left > 0)
-                    flyingEnemy.Location = new Point(flyingEnemy.Location.X - enemyFlying.moveSpeed, flyingEnemy.Location.Y);
-                if(enemyArmy.alive && flyingEnemy.Left > 0)
-                    flyingEnemy.Location = new Point(flyingEnemy.Location.X - enemyFlying.moveSpeed, flyingEnemy.Location.Y);
-                if(enemyBoat.alive && flyingEnemy.Left > 0)
-                    flyingEnemy.Location = new Point(flyingEnemy.Location.X - enemyFlying.moveSpeed, flyingEnemy.Location.Y);
+                if(enemyTank.alive && groundEnemy.Left > 0)
+                    groundEnemy.Location = new Point(groundEnemy.Location.X - enemyTank.moveSpeed, groundEnemy.Location.Y);
+                if(enemyArmy.alive && groundEnemy.Left > 0)
+                    groundEnemy.Location = new Point(groundEnemy.Location.X - enemyArmy.moveSpeed, groundEnemy.Location.Y);
+                if(enemyBoat.alive && groundEnemy.Left > 0)
+                    groundEnemy.Location = new Point(groundEnemy.Location.X - enemyBoat.moveSpeed, groundEnemy.Location.Y);
 
             }
         }
@@ -340,6 +390,12 @@ namespace minigame
             }
             
             panel.Dispose();
+            chooseLevel();
+        }
+        private void chooseLevel()
+        {
+            if (enemiesKilled % 10 == 0)
+                cycleLevels();
         }
     }
 }

@@ -57,6 +57,7 @@ namespace minigame
             this.groundPanel = new minigame.GradientPanel();
             this.groundTopPanel = new minigame.GradientPanel();
             this.groundBottomPanel = new minigame.GradientPanel();
+            this.groundEnemy = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             this.flyingEnemyPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flyingEnemy)).BeginInit();
@@ -69,6 +70,7 @@ namespace minigame
             this.bulletsPanel.SuspendLayout();
             this.bombsPanel.SuspendLayout();
             this.groundPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groundEnemy)).BeginInit();
             this.SuspendLayout();
             // 
             // Player
@@ -87,6 +89,7 @@ namespace minigame
             // flyingEnemyPanel
             // 
             this.flyingEnemyPanel.BackColor = System.Drawing.Color.Transparent;
+            this.flyingEnemyPanel.Controls.Add(this.groundEnemy);
             this.flyingEnemyPanel.Controls.Add(this.flyingEnemy);
             this.flyingEnemyPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.flyingEnemyPanel.Location = new System.Drawing.Point(412, 93);
@@ -372,6 +375,16 @@ namespace minigame
             this.groundBottomPanel.TabIndex = 20;
             this.groundBottomPanel.Top = System.Drawing.Color.DarkGoldenrod;
             // 
+            // groundEnemy
+            // 
+            this.groundEnemy.Image = global::minigame.Properties.Resources.army;
+            this.groundEnemy.Location = new System.Drawing.Point(287, 407);
+            this.groundEnemy.Name = "groundEnemy";
+            this.groundEnemy.Size = new System.Drawing.Size(100, 80);
+            this.groundEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.groundEnemy.TabIndex = 23;
+            this.groundEnemy.TabStop = false;
+            // 
             // Flight_X
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -405,6 +418,7 @@ namespace minigame
             this.bombsPanel.ResumeLayout(false);
             this.bombsPanel.PerformLayout();
             this.groundPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groundEnemy)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -437,5 +451,6 @@ namespace minigame
         private GradientPanel belowHalfHP;
         private GradientPanel aboveHalfHP;
         private System.Windows.Forms.Timer BulletTimer;
+        private System.Windows.Forms.PictureBox groundEnemy;
     }
 }
