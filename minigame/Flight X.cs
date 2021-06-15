@@ -20,8 +20,6 @@ namespace minigame
         Base enemyBoat = new Base(20, 15, 5, 10, 10, 10, false);   //Initialize Boat enemy
         Base enemyBoss = new Base(50, 15, 15, 30, 15, 10, false);   //Initialize Boss enemy
         
-        //Bitmap bmp = new Bitmap(minigame.Properties.Resources.Player);
-
         public Flight_X()
         {
             InitializeComponent();
@@ -32,8 +30,6 @@ namespace minigame
             GeneralTimer.Start(); //Initiate our Timer
             ultimate.Width = 0;
             cycleLevels();
-            //rotation(bmp, 15);
-            //Player.Image = bmp;
             createEnemyAir();
         }
 
@@ -99,12 +95,10 @@ namespace minigame
             await Task.Delay(1);   //Set Delay
             this.Invalidate();  //Refresh colors
         }
-       
-
-        private async void cycleLevels()
+        private async void cycleLevels()    //Function to Change current Level
         {
             await Task.Delay(10000);
-            int a = random.Next(1, 3);
+            int a = random.Next(1, 3);  //Random Level
             if(a == 1)
             {
                 currentLevel = "Sea";
@@ -124,7 +118,6 @@ namespace minigame
             groundBottomPanel.Invalidate();
             groundTopPanel.Invalidate();
         }
-
         private void Flight_X_KeyUp(object sender, KeyEventArgs e)  //Set Boolean values to false
         {
             if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up)    //Set boolean for Upwards movement to True
@@ -140,7 +133,6 @@ namespace minigame
             if (e.KeyCode == Keys.B)    //Set boolean for Dropping Bomb to True
                 goBomb = false;
         }
-
         private async void Flight_X_KeyDown(object sender, KeyEventArgs e)    //User's Movement
         {
             e.SuppressKeyPress = true;
@@ -213,7 +205,6 @@ namespace minigame
 
 
         }
-
         private void createEnemyAir()   //Spawn Enemy Helicopter
         {
             if (!enemyFlying.alive)
@@ -226,7 +217,6 @@ namespace minigame
                 enemyDefaultMovement();
             }
         }
-
         private void createEnemyGround()    //Spawn Ground enemy Based on Level
         {
             if(!enemyArmy.alive && !enemyBoat.alive && !enemyTank.alive)
@@ -234,6 +224,7 @@ namespace minigame
                 if(currentLevel == "Sea")
                 {
                     groundEnemy.Image = minigame.Properties.Resources.ship;
+                    groundEnemy.BringToFront();
                     groundEnemy.Location = new Point(groundPanel.Right, groundBottomPanel.Bounds.Top);
                     enemyBoat.alive = true;
                     enemyBoat.HP = 20;
@@ -244,6 +235,7 @@ namespace minigame
                 if(currentLevel == "Dessert")
                 {
                     groundEnemy.Image = minigame.Properties.Resources.tank;
+                    groundEnemy.BringToFront();
                     groundEnemy.Location = new Point(groundPanel.Right, groundBottomPanel.Bounds.Top);
                     enemyTank.alive = true;
                     enemyTank.HP = 20;
@@ -253,6 +245,7 @@ namespace minigame
                 if(currentLevel == "Jungle")
                 {
                     groundEnemy.Image = minigame.Properties.Resources.army;
+                    groundEnemy.BringToFront();
                     groundEnemy.Location = new Point(groundPanel.Right, groundBottomPanel.Bounds.Top);
                     enemyArmy.alive = true;
                     enemyArmy.HP = 5;
@@ -261,13 +254,7 @@ namespace minigame
                 }    
             }
         }
-
-        private void BulletTimer_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void enemyDefaultMovement()
+        private void enemyDefaultMovement() //Enemy Default Movement
         {
             if(playerCharacter.alive)
             {
@@ -282,7 +269,10 @@ namespace minigame
 
             }
         }
+        private void BulletTimer_Tick(object sender, EventArgs e)
+        {
 
+        }
         private void timer1_Tick(object sender, EventArgs e)    //Passive Timer
         {
             if (ultimate.Width < 169)
@@ -304,46 +294,34 @@ namespace minigame
                 || enemyBoss.alive)
                 enemyDefaultMovement();
         }
-        private void fireGun()
+        private void fireGun()  //Function to fire Bullets
         {
             --playerCharacter.bullets;
             bulletsLabel.Text = "Bullets : " + playerCharacter.bullets;
             playerBullets();
         }
-        private void dropBomb()
+        private void dropBomb() //Function to Show Bullets
         {
             --playerCharacter.bombs;
             bombsLabel.Text = "Bombs : " + playerCharacter.bombs;
         }
-        private async void reloadGun()
+        private async void reloadGun()  //Function to reload Ammo
         {
             bulletsLabel.Text = "Reloading...";
             await Task.Delay(500);
             playerCharacter.bullets = 99;
             bulletsLabel.Text = "Bullets : " + playerCharacter.bullets;
         }
-        private async void reloadBomb()
+        private async void reloadBomb() //Function to reload Bombs
         {
             bombsLabel.Text = "Reloading...";
             await Task.Delay(5000);
             playerCharacter.bombs = 10;
             bombsLabel.Text = "Bombs : " + playerCharacter.bombs;
         }
-        private void castUltimate()
+        private void castUltimate() //Function to Case Ultimate
         {
 
-        }
-        public static Image rotation(Image image, float angle)
-        {
-            Bitmap bmp = new Bitmap(image.Width, image.Height);
-            Graphics grs = Graphics.FromImage(image);
-            grs.TranslateTransform((float)bmp.Width / 2, (float)bmp.Height / 2);
-            grs.RotateTransform(angle);
-            grs.TranslateTransform(-(float)bmp.Width / 2, -(float)bmp.Height / 2);
-            grs.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            grs.DrawImage(image, new Point(0, 0));
-            grs.Dispose();
-            return bmp;
         }
         private async void playerBullets()  //Function to Create custom Player's bullets
         {
@@ -358,7 +336,6 @@ namespace minigame
             panel.Angle = 0;
             panel.Location = new Point(Player.Right, Player.Top + Player.Height / 2);
             panel.BringToFront();
-            //panel.SendToBack();
 
             while(panel.Right < flyingEnemyPanel.Right)
             {
