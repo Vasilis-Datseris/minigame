@@ -348,7 +348,7 @@ namespace minigame
                 await Task.Delay(50);
                 if (panel.Bounds.Right - flyingEnemy.Width * 2 > flyingEnemy.Left
                     && panel.Bounds.Right - flyingEnemy.Width * 2 < flyingEnemy.Right
-                    && panel.Bounds.Top - flyingEnemy.Height / 2 < flyingEnemy.Bottom - 30
+                    && panel.Bounds.Top - flyingEnemy.Height / 2 < flyingEnemy.Bottom - 15
                     && panel.Bounds.Top - flyingEnemy.Height / 2 > flyingEnemy.Top + 30
                     && enemyFlying.alive)
                 {
