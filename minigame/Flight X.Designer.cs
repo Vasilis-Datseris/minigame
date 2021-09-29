@@ -33,6 +33,7 @@ namespace minigame
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Flight_X));
             this.Player = new System.Windows.Forms.PictureBox();
             this.flyingEnemyPanel = new System.Windows.Forms.Panel();
+            this.groundEnemy = new System.Windows.Forms.PictureBox();
             this.flyingEnemy = new System.Windows.Forms.PictureBox();
             this.GeneralTimer = new System.Windows.Forms.Timer(this.components);
             this.playerHP = new System.Windows.Forms.Panel();
@@ -57,9 +58,9 @@ namespace minigame
             this.groundPanel = new minigame.GradientPanel();
             this.groundTopPanel = new minigame.GradientPanel();
             this.groundBottomPanel = new minigame.GradientPanel();
-            this.groundEnemy = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             this.flyingEnemyPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groundEnemy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flyingEnemy)).BeginInit();
             this.playerHP.SuspendLayout();
             this.topPanel.SuspendLayout();
@@ -70,7 +71,6 @@ namespace minigame
             this.bulletsPanel.SuspendLayout();
             this.bombsPanel.SuspendLayout();
             this.groundPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groundEnemy)).BeginInit();
             this.SuspendLayout();
             // 
             // Player
@@ -96,6 +96,16 @@ namespace minigame
             this.flyingEnemyPanel.Name = "flyingEnemyPanel";
             this.flyingEnemyPanel.Size = new System.Drawing.Size(388, 487);
             this.flyingEnemyPanel.TabIndex = 22;
+            // 
+            // groundEnemy
+            // 
+            this.groundEnemy.Image = global::minigame.Properties.Resources.army;
+            this.groundEnemy.Location = new System.Drawing.Point(287, 407);
+            this.groundEnemy.Name = "groundEnemy";
+            this.groundEnemy.Size = new System.Drawing.Size(100, 80);
+            this.groundEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.groundEnemy.TabIndex = 23;
+            this.groundEnemy.TabStop = false;
             // 
             // flyingEnemy
             // 
@@ -375,16 +385,6 @@ namespace minigame
             this.groundBottomPanel.TabIndex = 20;
             this.groundBottomPanel.Top = System.Drawing.Color.DarkGoldenrod;
             // 
-            // groundEnemy
-            // 
-            this.groundEnemy.Image = global::minigame.Properties.Resources.army;
-            this.groundEnemy.Location = new System.Drawing.Point(287, 407);
-            this.groundEnemy.Name = "groundEnemy";
-            this.groundEnemy.Size = new System.Drawing.Size(100, 80);
-            this.groundEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.groundEnemy.TabIndex = 23;
-            this.groundEnemy.TabStop = false;
-            // 
             // Flight_X
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -404,6 +404,7 @@ namespace minigame
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Flight_X_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             this.flyingEnemyPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groundEnemy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.flyingEnemy)).EndInit();
             this.playerHP.ResumeLayout(false);
             this.topPanel.ResumeLayout(false);
@@ -418,7 +419,6 @@ namespace minigame
             this.bombsPanel.ResumeLayout(false);
             this.bombsPanel.PerformLayout();
             this.groundPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groundEnemy)).EndInit();
             this.ResumeLayout(false);
 
         }
